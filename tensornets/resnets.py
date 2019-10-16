@@ -82,6 +82,19 @@ def resnet(x, preact, stack_fn, is_training, classes, stem,
     return x
 
 
+@var_scope('resnet18')
+@set_args(__args__)
+def resnet50(x, is_training=False, classes=1000,
+             stem=False, scope=None, reuse=None):
+    def stack_fn(x):
+        x = _stack(x, _block1, 64, 2, stride1=1, scope='conv2')
+        x = _stack(x, _block1, 128, 2, scope='conv3')
+        x = _stack(x, _block1, 256, 2, scope='conv4')
+        x = _stack(x, _block1, 512, 2, scope='conv5')
+        return x
+    return resnet(x, False, stack_fn, is_training, classes, stem, scope, reuse)
+
+
 @var_scope('resnet50')
 @set_args(__args__)
 def resnet50(x, is_training=False, classes=1000,
