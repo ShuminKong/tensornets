@@ -84,7 +84,7 @@ def resnet(x, preact, stack_fn, is_training, classes, stem,
 
 @var_scope('resnet18')
 @set_args(__args__)
-def resnet50(x, is_training=False, classes=1000,
+def resnet18(x, is_training=False, classes=1000,
              stem=False, scope=None, reuse=None):
     def stack_fn(x):
         x = _stack(x, _block1, 64, 2, stride1=1, scope='conv2')
@@ -367,6 +367,7 @@ def _blockw(x, filters, kernel_size=3, stride=1,
 
 
 # Simple alias.
+ResNet18 = resnet18
 ResNet50 = resnet50
 ResNet101 = resnet101
 ResNet152 = resnet152

@@ -7,6 +7,7 @@ from .inceptions import Inception3
 from .inceptions import Inception4
 from .inceptions import InceptionResNet2
 
+from .resnets import ResNet18
 from .resnets import ResNet50
 from .resnets import ResNet101
 from .resnets import ResNet152
